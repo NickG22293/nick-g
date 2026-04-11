@@ -1,0 +1,46 @@
+.wrapper {
+  border-top: 1px solid var(--border);
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.prompt {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.promptUser   { color: var(--green); }
+.promptSep    { color: var(--fg-dim); }
+.promptPath   { color: var(--blue); }
+.promptDollar { color: var(--fg-dim); }
+.promptCmd    { color: var(--fg); }
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.link {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--purple);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color 0.15s ease;
+}
+
+.link:hover,
+.link:focus-visible {
+  color: var(--cyan);
+  outline: none;
+}
+
+.bracket {
+  color: var(--fg-dim);
+}

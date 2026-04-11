@@ -1,0 +1,36 @@
+.boot {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  line-height: 1.7;
+  width: 100%;
+  max-width: 640px;
+  padding: 16px;
+}
+
+.line {
+  display: flex;
+  align-items: center;
+  white-space: pre;
+}
+
+.cursor {
+  display: inline-block;
+  width: 9px;
+  height: 1.1em;
+  background: var(--fg);
+  margin-left: 2px;
+  animation: blink 0.9s step-end infinite;
+  vertical-align: text-bottom;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* color helpers */
+.gold   { color: var(--gold); }
+.green  { color: var(--green); }
+.cyan   { color: var(--cyan); }
+.fg     { color: var(--fg); }
+.dim    { color: var(--fg-dim); }

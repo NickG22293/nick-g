@@ -1,0 +1,130 @@
+.window {
+  width: 100%;
+  max-width: 960px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.04),
+    0 24px 64px rgba(0,0,0,0.6);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.window.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Title bar ─────────────────────────────────────────── */
+.titleBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-raised);
+  border-bottom: 1px solid var(--border);
+  padding: 10px 14px;
+  user-select: none;
+}
+
+.dots {
+  display: flex;
+  gap: 7px;
+}
+
+.dotsSpacer {
+  width: 52px; /* mirror .dots width to center the title */
+}
+
+.dot {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+}
+
+.dot.red   { background: #f44747; }
+.dot.gold  { background: #d7ba7d; }
+.dot.green { background: #6a9955; }
+
+.title {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--fg-dim);
+  letter-spacing: 0.04em;
+}
+
+/* ── Prompt header ─────────────────────────────────────── */
+.promptHeader {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  padding: 14px 20px 4px;
+}
+
+.promptUser   { color: var(--green); }
+.promptSep    { color: var(--fg-dim); }
+.promptPath   { color: var(--blue); }
+.promptDollar { color: var(--fg-dim); }
+.promptCmd    { color: var(--fg); }
+
+/* ── Name ──────────────────────────────────────────────── */
+.nameBlock {
+  padding: 6px 20px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.name {
+  font-family: var(--font-vt);
+  font-size: 72px;
+  line-height: 1;
+  color: var(--gold);
+  letter-spacing: 0.04em;
+  text-shadow: 0 0 24px rgba(215, 186, 125, 0.35);
+}
+
+/* ── Two panels ────────────────────────────────────────── */
+.panels {
+  display: flex;
+  min-height: 340px;
+}
+
+.photoPanel {
+  flex: 0 0 auto;
+  width: 300px;
+  border-right: 1px solid var(--border);
+  padding: 20px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.menuPanel {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.menuPrompt {
+  font-family: var(--font-mono);
+  font-size: 14px;
+}
+
+/* ── Responsive ────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .panels {
+    flex-direction: column;
+  }
+
+  .photoPanel {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .name {
+    font-size: 52px;
+  }
+}

@@ -1,0 +1,84 @@
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.item {
+  display: block;
+  padding: 14px 18px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--bg-raised);
+  text-decoration: none;
+  color: inherit;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease,
+    box-shadow 0.15s ease;
+  cursor: pointer;
+}
+
+.item:hover,
+.item:focus-visible {
+  background: rgba(255,255,255,0.04);
+  outline: none;
+}
+
+/* Per-color accent on hover */
+.item.cyan:hover,
+.item.cyan:focus-visible {
+  border-color: var(--cyan);
+  box-shadow: 0 0 0 1px var(--cyan), 0 0 12px rgba(78,201,176,0.15);
+}
+
+.item.gold:hover,
+.item.gold:focus-visible {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 1px var(--gold), 0 0 12px rgba(215,186,125,0.15);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.arrow {
+  font-size: 10px;
+  color: var(--fg-dim);
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+
+.item:hover .arrow,
+.item:focus-visible .arrow {
+  transform: translateX(3px);
+  color: var(--fg);
+}
+
+.icon {
+  font-size: 16px;
+}
+
+.item.cyan .icon { color: var(--cyan); }
+.item.gold .icon { color: var(--gold); }
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.item.cyan .label { color: var(--cyan); }
+.item.gold .label { color: var(--gold); }
+
+.desc {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--fg-dim);
+  padding-left: 26px;
+  line-height: 1.5;
+}

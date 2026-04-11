@@ -1,0 +1,113 @@
+{
+  "name": "Web Dev",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+
+  "features": {
+    // Container tooling
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "dockerDashComposeVersion": "v2"
+    },
+
+    // Node — use "version": "lts" or pin e.g. "22"
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "lts",
+      "nvmVersion": "latest"
+    },
+
+    // Python (handy for scripts, static site generators, etc.)
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.12"
+    },
+
+    // Terraform + tofu
+    "ghcr.io/devcontainers/features/terraform:1": {
+      "version": "latest",
+      "tflint": "latest",
+      "terragrunt": "none"
+    },
+
+    // kubectl + helm for your k3s cluster
+    "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
+      "version": "latest",
+      "helm": "latest",
+      "minikube": "none"
+    },
+
+    // GitHub CLI
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+
+    // Common utils: jq, yq, curl, wget, etc.
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": true,
+      "configureZshAsDefault": true,
+      "installOhMyZsh": true,
+      "upgradePackages": true
+    }
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        // Terraform
+        "hashicorp.terraform",
+
+        // Kubernetes / Helm
+        "ms-kubernetes-tools.vscode-kubernetes-tools",
+        "tim-koehler.helm-intellisense",
+
+        // Docker
+        "ms-azuretools.vscode-docker",
+
+        // Web dev essentials
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss",
+        "astro-build.astro-vscode",          // if you go Astro
+        "svelte.svelte-vscode",               // if you go Svelte
+
+        // YAML / TOML / JSON
+        "redhat.vscode-yaml",
+        "tamasfe.even-better-toml",
+
+        // Git
+        "eamodio.gitlens",
+
+        // Quality of life
+        "usernamehw.errorlens",
+        "streetsidesoftware.code-spell-checker"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.tabSize": 2,
+        "[terraform]": {
+          "editor.defaultFormatter": "hashicorp.terraform",
+          "editor.formatOnSave": true
+        },
+        "terminal.integrated.defaultProfile.linux": "zsh"
+      }
+    }
+  },
+
+  // Forward common local dev ports
+  "forwardPorts": [
+    3000,   // generic dev server / Next / Nuxt
+    4321,   // Astro
+    5173,   // Vite
+    8080,   // generic fallback
+    8443    // local HTTPS
+  ],
+
+  "portsAttributes": {
+    "3000": { "label": "Dev server" },
+    "4321": { "label": "Astro" },
+    "5173": { "label": "Vite" },
+    "8080": { "label": "HTTP fallback" },
+    "8443": { "label": "HTTPS fallback" }
+  },
+
+  // Runs once after the container is created
+  "postCreateCommand": "npm install -g pnpm @anthropic-ai/sdk prettier eslint",
+
+  "remoteUser": "vscode"
+}

@@ -1,0 +1,55 @@
+/* Monokai Dimmed palette */
+:root {
+  --bg:        #1e1e1e;
+  --bg-panel:  #252526;
+  --bg-raised: #2d2d2d;
+  --border:    #3e3e3e;
+  --fg:        #c5c8c6;
+  --fg-dim:    #75715e;
+  --green:     #6a9955;
+  --gold:      #d7ba7d;
+  --purple:    #9872a2;
+  --blue:      #569cd6;
+  --cyan:      #4ec9b0;
+  --red:       #f44747;
+  --orange:    #ce9178;
+
+  --font-mono: 'Share Tech Mono', 'Courier New', monospace;
+  --font-vt:   'VT323', monospace;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.5;
+  overflow: hidden;
+}
+
+/* Subtle scanline overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.06) 2px,
+    rgba(0, 0, 0, 0.06) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
