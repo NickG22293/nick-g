@@ -20,3 +20,9 @@ dist-ssr
 *.suo
 *.sln
 *.sw?
+
+# Environment secrets
+.env
+
+# Book doc ID config
+books.config.json

@@ -1,0 +1,22 @@
+[
+  {
+    "id": "book-1",
+    "sections": {
+      "novel":      "GOOGLE_DOC_ID",
+      "characters": "GOOGLE_DOC_ID",
+      "setting":    "GOOGLE_DOC_ID"
+    },
+    "misc": {}
+  },
+  {
+    "id": "book-2",
+    "sections": {
+      "novel": "GOOGLE_DOC_ID",
+      "characters": { "docId": "GOOGLE_DOC_ID", "tabId": "TAB_ID" },
+      "setting":    { "docId": "GOOGLE_DOC_ID", "tabId": "TAB_ID" }
+    },
+    "misc": {
+      "outline": { "docId": "GOOGLE_DOC_ID", "tabId": "TAB_ID" }
+    }
+  }
+]

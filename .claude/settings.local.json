@@ -6,7 +6,17 @@
       "Bash(npm run:*)",
       "Bash(curl -s http://localhost:5173)",
       "Bash(curl -s http://localhost:5173/src/components/AsciiPhoto.jsx)",
-      "Bash(pkill -f \"vite\")"
+      "Bash(pkill -f \"vite\")",
+      "Bash(npm install:*)",
+      "Bash(node:*)",
+      "Bash(timeout 4 bash:*)",
+      "Bash(curl -s http://localhost:3001/api/health)",
+      "Bash(node server/index.js)",
+      "Bash(npx vite:*)",
+      "Read(//tmp/**)",
+      "Bash(curl -s http://localhost:3001/api/docs/book-1/novel)",
+      "Bash(curl -s \"http://localhost:3001/api/docs/../etc/passwd/foo\")",
+      "Bash(curl -s http://localhost:3001/api/tabs/somedocid123456)"
     ]
   }
 }

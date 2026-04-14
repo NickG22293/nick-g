@@ -1,0 +1,227 @@
+/* ── Word-processor page ──────────────────────────────────────────────────── */
+
+.page {
+  width: 100%;
+  max-width: 760px;
+  margin: 32px auto 64px;
+  background: #fefef8;
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(0, 0, 0, 0.12);
+  padding: 72px 80px;
+  font-family: 'Courier New', 'Courier', monospace;
+  font-size: 13.5px;
+  line-height: 1.75;
+  color: #1a1a1a;
+}
+
+/* Document title (from Google Docs metadata, shown above the body) */
+.docTitle {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 40px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+  font-weight: normal;
+}
+
+/* ── Typography ───────────────────────────────────────────────────────────── */
+
+.title {
+  font-family: 'Courier New', monospace;
+  font-size: 26px;
+  font-weight: bold;
+  line-height: 1.2;
+  margin-bottom: 8px;
+  color: #111;
+}
+
+.subtitle {
+  font-family: 'Courier New', monospace;
+  font-size: 18px;
+  font-weight: normal;
+  color: #444;
+  margin-bottom: 28px;
+  font-style: italic;
+}
+
+.h1 {
+  font-family: 'Courier New', monospace;
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 40px;
+  margin-bottom: 14px;
+  color: #111;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 4px;
+}
+
+.h2 {
+  font-family: 'Courier New', monospace;
+  font-size: 17px;
+  font-weight: bold;
+  margin-top: 32px;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.h3 {
+  font-family: 'Courier New', monospace;
+  font-size: 15px;
+  font-weight: bold;
+  margin-top: 24px;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.h4, .h5, .h6 {
+  font-family: 'Courier New', monospace;
+  font-size: 13.5px;
+  font-weight: bold;
+  margin-top: 18px;
+  margin-bottom: 6px;
+  color: #444;
+}
+
+.paragraph {
+  margin-bottom: 0;
+  margin-top: 0;
+  text-indent: 2em;     /* Classic typewriter paragraph indent */
+}
+
+/* No indent on a paragraph that follows a heading */
+h1 + .paragraph,
+h2 + .paragraph,
+h3 + .paragraph,
+h4 + .paragraph {
+  text-indent: 0;
+}
+
+.spacer {
+  height: 0.85em;
+}
+
+/* ── Lists ────────────────────────────────────────────────────────────────── */
+
+.listItem {
+  display: flex;
+  gap: 10px;
+  padding-left: calc(var(--level, 0) * 24px + 16px);
+  margin-bottom: 2px;
+}
+
+.bullet {
+  flex-shrink: 0;
+  min-width: 20px;
+  color: #555;
+}
+
+/* ── Inline styles ────────────────────────────────────────────────────────── */
+
+.link {
+  color: #2060b0;
+  text-decoration: underline;
+}
+
+.link:hover {
+  color: #1040a0;
+}
+
+/* ── Page break visual ────────────────────────────────────────────────────── */
+
+.pageBreak {
+  position: relative;
+  height: 40px;
+  margin: 32px -80px;
+  background: #e8e8e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pageBreak::before {
+  content: '— page break —';
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: #aaa;
+  text-transform: uppercase;
+}
+
+.hr {
+  border: none;
+  border-top: 1px solid #bbb;
+  margin: 24px 0;
+}
+
+/* ── States ───────────────────────────────────────────────────────────────── */
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 16px;
+  color: var(--fg-dim);
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+.emptyIcon {
+  font-size: 36px;
+  opacity: 0.3;
+}
+
+.errorIcon {
+  font-size: 28px;
+  color: var(--red);
+}
+
+.errorMsg {
+  max-width: 380px;
+  text-align: center;
+  color: var(--red);
+  line-height: 1.5;
+}
+
+/* ── Loading dots ─────────────────────────────────────────────────────────── */
+
+.loadingDots {
+  display: flex;
+  gap: 6px;
+}
+
+.loadingDots span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--cyan);
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+.loadingDots span:nth-child(2) { animation-delay: 0.2s; }
+.loadingDots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes pulse {
+  0%, 80%, 100% { opacity: 0.2; transform: scale(0.9); }
+  40%            { opacity: 1;   transform: scale(1.1); }
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+
+@media (max-width: 840px) {
+  .page {
+    margin: 0;
+    max-width: 100%;
+    padding: 40px 24px;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  .pageBreak {
+    margin: 32px -24px;
+  }
+}

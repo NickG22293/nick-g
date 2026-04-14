@@ -6,3 +6,10 @@
   justify-content: center;
   padding: 24px;
 }
+
+/* Sub-pages (e.g. /writing) fill the viewport without centering */
+.page {
+  align-items: stretch;
+  justify-content: stretch;
+  padding: 0;
+}

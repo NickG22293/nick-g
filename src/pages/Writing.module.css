@@ -1,0 +1,125 @@
+/* ── Root layout ───────────────────────────────────────────────────────────── */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background: var(--bg);
+  font-family: var(--font-mono);
+}
+
+/* ── Header bar ────────────────────────────────────────────────────────────── */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  height: 38px;
+  min-height: 38px;
+  background: var(--bg-panel);
+  border-bottom: 1px solid var(--border);
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--fg-dim);
+}
+
+.backLink {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--cyan);
+  text-decoration: none;
+  padding: 3px 6px;
+  border-radius: 3px;
+  transition: background 0.12s, color 0.12s;
+}
+
+.backLink:hover {
+  background: var(--bg-raised);
+  color: var(--cyan);
+}
+
+.backArrow {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.sep {
+  color: var(--border);
+}
+
+.headerTitle {
+  color: var(--fg);
+  letter-spacing: 0.04em;
+}
+
+.headerRight {
+  color: var(--fg-dim);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.docLabel {
+  color: var(--gold);
+}
+
+/* ── Body: sidebar + main ──────────────────────────────────────────────────── */
+
+.body {
+  display: flex;
+  flex: 1;
+  min-height: 0;  /* Required for flex child overflow to work */
+  overflow: hidden;
+}
+
+.sidebar {
+  flex-shrink: 0;
+  overflow-y: auto;
+  height: 100%;
+}
+
+/* ── Document scroll area ──────────────────────────────────────────────────── */
+
+.main {
+  flex: 1;
+  overflow-y: auto;
+  height: 100%;
+  /* Old word-processor gutter colour — dark blue-gray, classic feel */
+  background: #2e3440;
+}
+
+.docWrap {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Responsive: collapse sidebar on narrow screens ────────────────────────── */
+
+@media (max-width: 640px) {
+  .body {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    max-height: 40vh;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .main {
+    flex: 1;
+    height: auto;
+  }
+}
