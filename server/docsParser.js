@@ -99,7 +99,7 @@ function buildListMap(lists) {
   return map
 }
 
-function flushList(blocks, currentList) {
+function flushList() {
   // Lists are emitted inline as individual list-item blocks — nothing to flush
   // (kept for potential future grouping logic)
 }

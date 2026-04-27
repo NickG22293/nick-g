@@ -2,20 +2,17 @@ import { useEffect, useRef, useState } from 'react'
 import styles from './DocViewer.module.css'
 
 export default function DocViewer({ bookId, sectionId }) {
-  const [state, setState] = useState({ status: 'idle', title: null, blocks: [] })
+  const [data, setData] = useState(null)   // { key, title, blocks } once loaded
+  const [error, setError] = useState(null) // { key, message } on failure
   const abortRef = useRef(null)
 
   useEffect(() => {
-    if (!bookId || !sectionId) {
-      setState({ status: 'idle', title: null, blocks: [] })
-      return
-    }
+    if (!bookId || !sectionId) return
+    const key = `${bookId}:${sectionId}`
 
     abortRef.current?.abort()
     const controller = new AbortController()
     abortRef.current = controller
-
-    setState({ status: 'loading', title: null, blocks: [] })
 
     fetch(`/api/docs/${encodeURIComponent(bookId)}/${encodeURIComponent(sectionId)}`, {
       signal: controller.signal,
@@ -24,24 +21,29 @@ export default function DocViewer({ bookId, sectionId }) {
         if (!res.ok) return res.json().then(j => Promise.reject(new Error(j.error ?? res.statusText)))
         return res.json()
       })
-      .then(data => setState({ status: 'ready', title: data.title, blocks: data.blocks }))
+      .then(d => {
+        setData({ key, title: d.title, blocks: d.blocks })
+        setError(null)
+      })
       .catch(err => {
         if (err.name === 'AbortError') return
-        setState({ status: 'error', error: err.message, title: null, blocks: [] })
+        setError({ key, message: err.message })
       })
 
     return () => controller.abort()
   }, [bookId, sectionId])
 
-  if (state.status === 'idle')    return <EmptyState />
-  if (state.status === 'loading') return <Loading />
-  if (state.status === 'error')   return <ErrorView message={state.error} />
+  const currentKey = bookId && sectionId ? `${bookId}:${sectionId}` : null
+
+  if (!currentKey)                        return <EmptyState />
+  if (error?.key === currentKey)          return <ErrorView message={error.message} />
+  if (data?.key !== currentKey)           return <Loading />
 
   return (
     <article className={styles.page}>
-      {state.title && <h1 className={styles.docTitle}>{state.title}</h1>}
+      {data.title && <h1 className={styles.docTitle}>{data.title}</h1>}
       <div className={styles.body}>
-        {state.blocks.map((block, i) => <Block key={i} block={block} />)}
+        {data.blocks.map((block, i) => <Block key={i} block={block} />)}
       </div>
     </article>
   )
