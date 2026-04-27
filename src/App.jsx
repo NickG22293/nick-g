@@ -3,7 +3,11 @@ import { Routes, Route, useLocation } from 'react-router-dom'
 import BootSequence from './components/BootSequence'
 import Terminal from './components/Terminal'
 import Writing from './pages/Writing'
+import HockeyBot from './pages/HockeyBot'
+import LoadedQuestions from './pages/LoadedQuestions'
 import styles from './App.module.css'
+
+const WRITING_ENABLED = import.meta.env.VITE_FEATURE_WRITING === 'true'
 
 export default function App() {
   const [booted, setBooted] = useState(
@@ -26,7 +30,9 @@ export default function App() {
     <div className={`${styles.root} ${location.pathname !== '/' ? styles.page : ''}`}>
       <Routes>
         <Route path="/" element={homePage} />
-        <Route path="/writing" element={<Writing />} />
+        {WRITING_ENABLED && <Route path="/writing" element={<Writing />} />}
+        <Route path="/hockey-bot" element={<HockeyBot />} />
+        <Route path="/loaded-questions" element={<LoadedQuestions />} />
       </Routes>
     </div>
   )

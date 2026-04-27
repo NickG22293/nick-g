@@ -1,8 +1,29 @@
-.photo {
+.wrapper {
+  position: relative;
   width: 100%;
   max-width: 260px;
+}
+
+.photo,
+.chaotic {
+  width: 100%;
   height: auto;
   image-rendering: pixelated;
   border: 1px solid var(--border);
   border-radius: 2px;
+  transition: opacity 0.3s ease;
+}
+
+.chaotic {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+
+.wrapper:hover .photo {
+  opacity: 0;
+}
+
+.wrapper:hover .chaotic {
+  opacity: 1;
 }

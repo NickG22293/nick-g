@@ -1,22 +1,32 @@
 import { Link } from 'react-router-dom'
 import styles from './NavMenu.module.css'
 
+const WRITING_ENABLED = import.meta.env.VITE_FEATURE_WRITING === 'true'
+
 const ITEMS = [
-  {
+  ...(WRITING_ENABLED ? [{
     key: 'writing',
     label: 'Writing',
-    to: '/writing',         // internal route
+    to: '/writing',
     description: 'Short fiction, essays, and other creative work.',
     color: 'cyan',
     icon: '✎',
-  },
+  }] : []),
   {
-    key: 'fantasy-bot',
-    label: 'Fantasy Bot',
-    href: 'https://www.nick-gordon.com/fantasy-bot',
+    key: 'hockey-bot',
+    label: 'Hockey Bot',
+    to: '/hockey-bot',
     description: 'AI companion for Yahoo & ESPN fantasy hockey.',
     color: 'gold',
     icon: '⬡',
+  },
+  {
+    key: 'loaded-questions',
+    label: 'Loaded Questions',
+    to: '/loaded-questions',
+    description: 'Coming soon.',
+    color: 'cyan',
+    icon: '?',
   },
 ]
 
