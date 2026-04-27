@@ -17,7 +17,8 @@
       "Bash(curl -s http://localhost:3001/api/docs/book-1/novel)",
       "Bash(curl -s \"http://localhost:3001/api/docs/../etc/passwd/foo\")",
       "Bash(curl -s http://localhost:3001/api/tabs/somedocid123456)",
-      "Bash(ls *)"
+      "Bash(ls *)",
+      "Bash(curl -s \"https://api.github.com/repos/aquasecurity/trivy-action/releases/latest\")"
     ]
   }
 }
