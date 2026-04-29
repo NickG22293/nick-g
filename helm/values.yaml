@@ -1,0 +1,12 @@
+image:
+  repository: ghcr.io/nickg22293/nick-g
+  tag: latest
+  pullPolicy: Always
+
+replicaCount: 1
+
+service:
+  port: 80
+
+ingress:
+  host: nick-gordon.com
