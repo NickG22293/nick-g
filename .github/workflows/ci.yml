@@ -99,3 +99,12 @@ jobs:
         run: |
           helm package helm/
           helm push nick-g-*.tgz oci://${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+
+      - name: Set Helm chart package visibility to private
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          CHART_NAME=$(helm show chart helm/ | grep '^name:' | awk '{print $2}')
+          REPO_NAME=$(echo "${{ env.IMAGE_NAME }}" | cut -d'/' -f2)
+          gh api --method PATCH "/user/packages/container/${REPO_NAME}%2F${CHART_NAME}" -f visibility=private
