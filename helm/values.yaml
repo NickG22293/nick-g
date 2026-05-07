@@ -3,6 +3,8 @@ image:
   tag: latest
   pullPolicy: Always
 
+imagePullSecret: ghcr-pull-secret
+
 replicaCount: 1
 
 service:
