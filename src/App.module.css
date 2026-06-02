@@ -7,6 +7,13 @@
   padding: 24px;
 }
 
+@media (max-width: 640px) {
+  .root {
+    align-items: flex-start;
+    padding: 12px;
+  }
+}
+
 /* Sub-pages (e.g. /writing) fill the viewport without centering */
 .page {
   align-items: stretch;

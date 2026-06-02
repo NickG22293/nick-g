@@ -38,6 +38,12 @@ body {
   overflow: hidden;
 }
 
+@media (max-width: 640px) {
+  body {
+    overflow-y: auto;
+  }
+}
+
 /* Subtle scanline overlay */
 body::after {
   content: '';

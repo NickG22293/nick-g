@@ -116,15 +116,38 @@
 @media (max-width: 640px) {
   .panels {
     flex-direction: column;
+    min-height: unset;
   }
 
   .photoPanel {
     width: 100%;
+    max-height: 220px;
+    overflow: hidden;
     border-right: none;
     border-bottom: 1px solid var(--border);
+    padding: 14px;
+  }
+
+  .menuPanel {
+    padding: 14px;
   }
 
   .name {
-    font-size: 52px;
+    font-size: 44px;
+  }
+
+  .promptHeader {
+    font-size: 12px;
+    padding: 10px 14px 4px;
+  }
+
+  .nameBlock {
+    padding: 4px 14px 14px;
+  }
+}
+
+@media (max-width: 380px) {
+  .name {
+    font-size: 36px;
   }
 }
