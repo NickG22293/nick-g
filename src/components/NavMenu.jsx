@@ -4,7 +4,16 @@ import styles from './NavMenu.module.css'
 const WRITING_ENABLED = import.meta.env.VITE_FEATURE_WRITING === 'true'
 
 const ITEMS = [
-  ...(WRITING_ENABLED ? [{
+  ...(WRITING_ENABLED ? [
+  {
+    key: 'candid',
+    label: 'Candid',
+    href: 'https://candid.nick-gordon.com',
+    description: 'Coming soon.',
+    color: 'cyan',
+    icon: '?',
+  },
+  {
     key: 'writing',
     label: 'Writing',
     to: '/writing',
@@ -19,14 +28,6 @@ const ITEMS = [
     description: 'AI companion for Yahoo & ESPN fantasy hockey.',
     color: 'gold',
     icon: '⬡',
-  },
-  {
-    key: 'loaded-questions',
-    label: 'Loaded Questions',
-    to: '/loaded-questions',
-    description: 'Coming soon.',
-    color: 'cyan',
-    icon: '?',
   },
 ]
 

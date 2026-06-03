@@ -4,7 +4,7 @@ import BootSequence from './components/BootSequence'
 import Terminal from './components/Terminal'
 import Writing from './pages/Writing'
 import HockeyBot from './pages/HockeyBot'
-import LoadedQuestions from './pages/LoadedQuestions'
+import Candid from './pages/Candid'
 import styles from './App.module.css'
 
 const WRITING_ENABLED = import.meta.env.VITE_FEATURE_WRITING === 'true'
@@ -32,7 +32,7 @@ export default function App() {
         <Route path="/" element={homePage} />
         {WRITING_ENABLED && <Route path="/writing" element={<Writing />} />}
         <Route path="/hockey-bot" element={<HockeyBot />} />
-        <Route path="/loaded-questions" element={<LoadedQuestions />} />
+        <Route path="/candid" element={<Candid />} />
       </Routes>
     </div>
   )
